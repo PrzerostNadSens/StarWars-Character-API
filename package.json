@@ -16,7 +16,11 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "prisma": "prisma migrate dev --name init",
+    "prisma:migration:apply": "prisma migrate dev",
+    "prisma:migration:create": "prisma migrate dev --create-only",
+    "prisma:migration:deploy": "prisma migrate deploy"
   },
   "dependencies": {
     "@casl/prisma": "1.5.1",

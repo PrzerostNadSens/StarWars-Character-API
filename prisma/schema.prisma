@@ -8,10 +8,10 @@ generator client {
 }
 
 model Character {
-  id       Int      @id @default(autoincrement())
+  id       String    @id() @default(uuid())
   name     String
   episodes Episode[]
-  planet   String?  
+  planet   String?
 }
 
 enum Episode {
