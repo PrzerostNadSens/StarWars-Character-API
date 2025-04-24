@@ -1,0 +1,21 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Character {
+  id       Int      @id @default(autoincrement())
+  name     String
+  episodes Episode[]
+  planet   String?  
+}
+
+enum Episode {
+  NEWHOPE
+  EMPIRE
+  JEDI
+}
