@@ -8,10 +8,13 @@ generator client {
 }
 
 model Character {
-  id       String    @id() @default(uuid())
-  name     String
-  episodes Episode[]
-  planet   String?
+  id        String    @id() @default(uuid())
+  name      String    @unique
+  episodes  Episode[]
+  planet    String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
 }
 
 enum Episode {
