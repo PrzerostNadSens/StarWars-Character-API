@@ -8,14 +8,10 @@ import {
   Delete,
   HttpCode,
   HttpStatus,
+  Query,
 } from '@nestjs/common';
 import { CharactersService } from './characters.service';
-import {
-  CreateCharacterDto,
-  GetCharacterListDto,
-  CharacterDto,
-  UpdateCharacterDto,
-} from './dto';
+import { CreateCharacterDto, CharacterDto, UpdateCharacterDto } from './dto';
 import {
   ApiTags,
   ApiOperation,
@@ -23,7 +19,9 @@ import {
   ApiOkResponse,
   ApiBadRequestResponse,
   ApiNotFoundResponse,
+  ApiCreatedResponse,
 } from '@nestjs/swagger';
+import { PaginateQueryDto, PaginatedResponse } from '@helpers/pagination/dto';
 
 @ApiTags('characters')
 @Controller('characters')
@@ -32,20 +30,22 @@ export class CharactersController {
 
   @Post()
   @ApiOperation({ summary: 'The character has been created' })
-  @ApiOkResponse({ type: CharacterDto })
+  @ApiCreatedResponse({ type: CharacterDto })
   @ApiBadRequestResponse({ description: 'Validation errors' })
   async create(
     @Body() createCharacterDto: CreateCharacterDto,
-  ): Promise<CreateCharacterDto> {
+  ): Promise<CharacterDto> {
     return this.charactersService.create(createCharacterDto);
   }
 
   @Get()
   @ApiOperation({ summary: 'Get a list of characters' })
-  @ApiOkResponse({ type: GetCharacterListDto })
+  @ApiOkResponse({ type: PaginatedResponse<CharacterDto> })
   @ApiBadRequestResponse({ description: 'Validation errors' })
-  async findAll(): Promise<GetCharacterListDto[]> {
-    return this.charactersService.findAll();
+  async findAll(
+    @Query() paginateQuery?: PaginateQueryDto,
+  ): Promise<PaginatedResponse<CharacterDto>> {
+    return this.charactersService.findAll(paginateQuery);
   }
 
   @Get(':id')
@@ -76,6 +76,6 @@ export class CharactersController {
   @ApiNotFoundResponse({ description: 'Character was not found in database' })
   @ApiBadRequestResponse({ description: 'Validation errors' })
   async remove(@Param('id') id: string): Promise<void> {
-    await this.charactersService.remove(id);
+    await this.charactersService.softDelete(id);
   }
 }
