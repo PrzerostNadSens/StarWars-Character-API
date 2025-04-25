@@ -1,4 +1,4 @@
-import { DatabaseModule } from '../database/database.module';
+import { DatabaseModule } from '@database/database.module';
 import { Module } from '@nestjs/common';
 import { CharactersController } from './characters.controller';
 import { CharactersDao } from './characters.dao';

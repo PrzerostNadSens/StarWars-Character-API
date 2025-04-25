@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CharactersService } from '../characters/characters.service';
-import { CharactersDao } from '../characters/characters.dao';
+import { CharactersService } from '@characters/characters.service';
+import { CharactersDao } from '@characters/characters.dao';
 import { NotFoundException, BadRequestException } from '@nestjs/common';
 import {
   mockCharacters,

@@ -5,8 +5,8 @@ import {
   generateFakeCreateCharacterDto,
   generateFakeCharacter,
 } from './mocks';
-import { CharactersController } from '../characters/characters.controller';
-import { CharactersService } from '../characters/characters.service';
+import { CharactersController } from '@characters/characters.controller';
+import { CharactersService } from '@characters/characters.service';
 
 describe('CharactersController', () => {
   let controller: CharactersController;
