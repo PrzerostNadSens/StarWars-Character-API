@@ -1,17 +1,24 @@
 FROM node:22-alpine3.19 as builder
-
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json package-lock.json ./
+COPY tsconfig.json tsconfig.build.json ./
+COPY prisma ./prisma
 
-RUN npm install
+RUN npm ci
+RUN npx prisma generate
 
 COPY . .
 
-RUN npx prisma generate
-
 RUN npm run build
+
+FROM node:22-alpine3.19
+WORKDIR /app
+
+COPY --from=builder /app/dist .
+COPY --from=builder  /app/package.json /app/package-lock.json ./
+COPY --from=builder  /app/node_modules ./node_modules
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main.js"]
+CMD ["npm", "run", "start:prod:migrate"]
