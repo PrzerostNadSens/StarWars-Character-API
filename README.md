@@ -63,6 +63,57 @@ npm run test
 
 This will execute the unit tests and output the results to the terminal.
 
+#### **Design Decisions**
+
+1.  **Use of Prisma ORM:**
+
+    - The decision to use Prisma was made to efficiently manage the database schema alongside PostgreSQL integration promoting clean and maintainable code.
+
+2.  **Separation of Concerns:**
+
+    - Separated the data access layer from the business logic. This means Prisma types and structures are not used directly in the service layer, enabling easier migration to a different DAO in the future.
+
+3.  **Docker Configuration:**
+
+    - Configured Docker and Docker Compose for easy deployment in production environments, such as on an AWS EC2 instance.
+
+4.  **Environment Configuration:**
+
+    - Utilized a `.env` file for managing production database access seamlessly.
+
+5.  **UUID for ID Management:**
+
+    - Enhanced the data structure with a UUID for easier data management.
+
+6.  **Unique Name Enforcement:**
+
+    - Assigned unique constraints on the name field to prevent the duplication of characters.
+
+7.  **Soft Deletion with `deleted_at`:**
+
+    - Integrated a `deleted_at` column to implement soft deletion of records. This allows records to be flagged as deleted without being permanently removed from the database.
+
+8.  **Enum for Episode Consistency:**
+
+    - Defined an episode enumeration directly in the Prisma schema to uphold database integrity and simplify future expansions.
+
+#### **Ensuring Continued Performance in Production**
+
+To ensure the smooth operation of this application in a production environment, consider implementing the following measures:
+
+- **Logging and Monitoring:**
+
+  - Integrate logging to capture application behavior and errors. Tool like AWS CloudWatch can be beneficial.
+  - Implement monitoring tools to track application health and performance metrics.
+
+- **Alerts:**
+
+  - Configure alert systems to notify the team of critical issues like service interruptions or significant performance degradation.
+
+- **Continuous Integration/Continuous Deployment (CI/CD):**
+
+  - Set up automated pipelines for integration and deployment to quickly test and deploy changes. Tools like GitHub Actions, CircleCI or AWS CodePipeline can be utilized.
+
 ## Conclusion
 
 For any questions or further details, feel free to check the code or open an issue.
