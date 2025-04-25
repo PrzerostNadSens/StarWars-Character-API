@@ -1,73 +1,68 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# StarWars Character API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a web application designed for managing Star Wars character data. The backend is built using **NestJS**, with a **PostgreSQL** database managed through **Prisma ORM**. The frontend is not included in this repository; however, you can interact with the API via Swagger or by running unit tests.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Technologies Used
 
-## Description
+- **Backend:** NestJS
+- **Database:** PostgreSQL
+- **ORM:** Prisma
+- **Testing Framework:** Jest
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Getting Started
 
-## Installation
+Follow these steps to set up and run the application locally.
+
+### Prerequisites
+
+Before starting, make sure you have the following installed:
+
+- **Docker**
+- **Docker Compose**
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/PrzerostNadSens/StarWars-Character-API.git
+   cd StarWars-Character-API
+   ```
+
+2. Set up environment variables:
+
+   Create a `.env` file in the root directory with the following content:
+
+   ```env
+   DATABASE_URL=postgresql://dev:dev@postgres:5432/test
+   ```
+
+3. Build and run the Docker containers:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+   This will build the application and run the backend and PostgreSQL database in Docker containers.
+
+### API Documentation
+
+Once the application is running, you can access the Swagger API documentation at:
+
+[http://localhost:3000/docs](http://localhost:3000/docs)
+
+This interactive interface allows you to explore and test the API endpoints.
+
+### Running Unit Tests
+
+To ensure the application works correctly, you can run the unit tests with Jest. To do so, run the following command:
 
 ```bash
-$ npm install
+npm run test
 ```
 
-## Running the app
+This will execute the unit tests and output the results to the terminal.
 
-```bash
-# development
-$ npm run start
+## Conclusion
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+For any questions or further details, feel free to check the code or open an issue.
