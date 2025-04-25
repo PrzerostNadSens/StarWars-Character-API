@@ -18,6 +18,8 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
+      "@characters/*": ["src/characters/*"],
+      "@database/*": ["src/database/*"],
       "@helpers/*": ["src/helpers/*"]
     }
   }

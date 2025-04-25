@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@casl/prisma": "1.5.1",
+    "@faker-js/faker": "9.7.0",
     "@nestjs/common": "11.1.0",
     "@nestjs/config": "4.0.2",
     "@nestjs/core": "11.1.0",
@@ -58,23 +59,7 @@
     "ts-loader": "9.5.1",
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
-    "typescript": "5.8.3"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "rootDir": "src",
-    "testRegex": ".*\\.spec\\.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "typescript": "5.8.3",
+    "uuid": "11.1.0"
   }
 }
